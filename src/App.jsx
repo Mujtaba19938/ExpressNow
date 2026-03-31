@@ -7,17 +7,31 @@ import "./styles/global.css";
 
 export default function App() {
   const [page, setPage] = useState("home");
+  const [selectedCategory, setSelectedCategory] = useState("General Store");
 
-  const routes = {
-    home:    <HomePage setPage={setPage} />,
-    listing: <ProductListingPage setPage={setPage} />,
-    detail:  <ProductDetailPage setPage={setPage} />,
-    cart:    <CartCheckoutPage setPage={setPage} />,
+  const navigateTo = (pageName, category = null) => {
+    setPage(pageName);
+    if (category !== null) setSelectedCategory(category);
   };
 
   return (
     <div>
-      {routes[page]}
+      {page === "home" && (
+        <HomePage setPage={navigateTo} />
+      )}
+      {page === "listing" && (
+        <ProductListingPage
+          setPage={navigateTo}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
+      )}
+      {page === "detail" && (
+        <ProductDetailPage setPage={navigateTo} />
+      )}
+      {page === "cart" && (
+        <CartCheckoutPage setPage={navigateTo} />
+      )}
     </div>
   );
 }
