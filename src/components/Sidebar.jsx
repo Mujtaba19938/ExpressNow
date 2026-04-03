@@ -24,7 +24,7 @@ export default function Sidebar({ activeCategory, onSelect }) {
       overflow: "hidden",
       alignSelf: "flex-start",
       position: "sticky",
-      top: 100,
+      top: 126,
     }}>
       {/* Header */}
       <div style={{

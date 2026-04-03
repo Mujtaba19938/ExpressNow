@@ -13,7 +13,7 @@ export default function ProductCard({ product, onAddToCart }) {
 
   const {
     name, category, subcat, price, oldPrice,
-    unit, badge, badgeType, bg, rating, reviews,
+    unit, badge, badgeType, bg, rating, reviews, image,
   } = product;
 
   const discount = oldPrice
@@ -41,13 +41,26 @@ export default function ProductCard({ product, onAddToCart }) {
         justifyContent: "center",
         position: "relative",
       }}>
-        {/* Placeholder illustration */}
-        <div style={{
-          width: 64,
-          height: 64,
-          borderRadius: "50%",
-          background: "rgba(0,0,0,0.06)",
-        }} />
+        {/* Product image or placeholder */}
+        {image ? (
+          <img
+            src={image}
+            alt={name}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+              padding: "8px",
+            }}
+          />
+        ) : (
+          <div style={{
+            width: 64,
+            height: 64,
+            borderRadius: "50%",
+            background: "rgba(0,0,0,0.06)",
+          }} />
+        )}
 
         {/* Badge */}
         {badge && (

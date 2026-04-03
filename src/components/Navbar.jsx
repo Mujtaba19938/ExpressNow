@@ -6,7 +6,7 @@ export default function Navbar({ cartCount = 0, onNavigate }) {
   const [category, setCategory] = useState("All Categories");
 
   return (
-    <>
+    <div style={{ position: "sticky", top: 0, zIndex: 100 }}>
       {/* Top bar */}
       <div style={{ background: "#1A1A2E", padding: "6px 16px", display: "flex", justifyContent: "space-between" }}>
         <span style={{ fontSize: 11, color: "#aaa" }}>
@@ -27,9 +27,6 @@ export default function Navbar({ cartCount = 0, onNavigate }) {
         display: "flex",
         alignItems: "center",
         gap: 12,
-        position: "sticky",
-        top: 0,
-        zIndex: 100,
       }}>
         {/* Logo */}
         <div 
@@ -158,6 +155,6 @@ export default function Navbar({ cartCount = 0, onNavigate }) {
       }}>
         Same-day delivery available in Karachi — Order before 3 PM
       </div>
-    </>
+    </div>
   );
 }
