@@ -1,0 +1,92 @@
+/* ============================================================
+   Express Now — Global Styles
+   Brand: #FF6B00 (orange), #1A1A2E (dark), #22C55E (fresh green)
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --orange:    #FF6B00;
+  --orange-lt: #fff7f0;
+  --orange-dk: #e55f00;
+  --dark:      #1A1A2E;
+  --green:     #22C55E;
+  --green-lt:  #f0faf4;
+  --blue:      #3B82F6;
+  --blue-lt:   #eff6ff;
+  --bg:        #F8F8F8;
+  --white:     #ffffff;
+  --border:    rgba(0,0,0,0.1);
+  --text:      #111827;
+  --muted:     #6B7280;
+  --hint:      #9CA3AF;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: inherit; }
+input, select, textarea { font-family: inherit; }
+
+/* Utility classes */
+.text-orange { color: var(--orange); }
+.text-green  { color: var(--green); }
+.text-muted  { color: var(--muted); }
+.bg-orange   { background: var(--orange); }
+.bg-dark     { background: var(--dark); }
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 600;
+}
+.badge-sale   { background: var(--orange); color: #fff; }
+.badge-fresh  { background: var(--green);  color: #fff; }
+.badge-frozen { background: var(--blue);   color: #fff; }
+.badge-new    { background: var(--dark);   color: #fff; }
+
+.btn-primary {
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+.btn-primary:hover { background: var(--orange-dk); }
+
+.btn-dark {
+  background: var(--dark);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.card {
+  background: var(--white);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
