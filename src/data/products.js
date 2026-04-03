@@ -90,12 +90,12 @@ export const products = [
   { id: 806, name: "Oxidized Jhumka Earrings",   category: "Jewellery", subcat: "Earrings", price: 480,  oldPrice: null, unit: "1 pair",  badge: "New",     badgeType: "new",    bg: "#fffbeb", rating: 4, reviews: 65, image: "/images/jewellery/oxidized-jhumka-earrings.png" },
 
   // ─── Handbags ────────────────────────────────────────────────────────────────
-  { id: 901, name: "Ladies Tote Bag",            category: "Handbags", subcat: "Tote",     price: 1800, oldPrice: 2200, unit: "1 piece", badge: "18% off", badgeType: "sale",   bg: "#fdf4ff", rating: 5, reviews: 84  },
-  { id: 902, name: "Shoulder Bag Brown",         category: "Handbags", subcat: "Shoulder", price: 2500, oldPrice: null, unit: "1 piece", badge: "New",     badgeType: "new",    bg: "#fdf4ff", rating: 5, reviews: 61  },
-  { id: 903, name: "Party Clutch",               category: "Handbags", subcat: "Clutch",   price: 950,  oldPrice: 1200, unit: "1 piece", badge: "21% off", badgeType: "sale",   bg: "#fdf4ff", rating: 4, reviews: 47  },
-  { id: 904, name: "Mini Backpack",              category: "Handbags", subcat: "Backpack", price: 2200, oldPrice: null, unit: "1 piece", badge: null,      badgeType: null,     bg: "#fdf4ff", rating: 4, reviews: 38  },
-  { id: 905, name: "Crossbody Leather Bag",      category: "Handbags", subcat: "Shoulder", price: 3500, oldPrice: 4000, unit: "1 piece", badge: "13% off", badgeType: "sale",   bg: "#fdf4ff", rating: 5, reviews: 72  },
-  { id: 906, name: "Casual Canvas Tote",         category: "Handbags", subcat: "Tote",     price: 780,  oldPrice: null, unit: "1 piece", badge: "New",     badgeType: "new",    bg: "#f4f4f4", rating: 4, reviews: 29  },
+  { id: 901, name: "Ladies Tote Bag",            category: "Handbags", subcat: "Tote",     price: 1800, oldPrice: 2200, unit: "1 piece", badge: "18% off", badgeType: "sale",   bg: "#fdf4ff", rating: 5, reviews: 84,  image: "/images/handbags/ladies-tote-bag.png"       },
+  { id: 902, name: "Shoulder Bag Brown",         category: "Handbags", subcat: "Shoulder", price: 2500, oldPrice: null, unit: "1 piece", badge: "New",     badgeType: "new",    bg: "#fdf4ff", rating: 5, reviews: 61,  image: "/images/handbags/shoulder-bag-brown.png"    },
+  { id: 903, name: "Party Clutch",               category: "Handbags", subcat: "Clutch",   price: 950,  oldPrice: 1200, unit: "1 piece", badge: "21% off", badgeType: "sale",   bg: "#fdf4ff", rating: 4, reviews: 47,  image: "/images/handbags/party-clutch.png"          },
+  { id: 904, name: "Mini Backpack",              category: "Handbags", subcat: "Backpack", price: 2200, oldPrice: null, unit: "1 piece", badge: null,      badgeType: null,     bg: "#fdf4ff", rating: 4, reviews: 38,  image: "/images/handbags/mini-backpack.png"         },
+  { id: 905, name: "Crossbody Leather Bag",      category: "Handbags", subcat: "Shoulder", price: 3500, oldPrice: 4000, unit: "1 piece", badge: "13% off", badgeType: "sale",   bg: "#fdf4ff", rating: 5, reviews: 72,  image: "/images/handbags/crossbody-leather-bag.png" },
+  { id: 906, name: "Casual Canvas Tote",         category: "Handbags", subcat: "Tote",     price: 780,  oldPrice: null, unit: "1 piece", badge: "New",     badgeType: "new",    bg: "#f4f4f4", rating: 4, reviews: 29,  image: "/images/handbags/casual-canvas-tote.png"    },
 
   // ─── Perfumes ────────────────────────────────────────────────────────────────
   { id: 1001, name: "Oud Al Qamar 100ml",        category: "Perfumes", subcat: "Oriental", price: 3500, oldPrice: 4000, unit: "100ml",    badge: "13% off", badgeType: "sale",   bg: "#fdf2f8", rating: 5, reviews: 115 },
