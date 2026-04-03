@@ -74,12 +74,12 @@ export const products = [
   { id: 606, name: "Formal Trouser Suit",        category: "Kapray — Ladies", subcat: "Formal",  price: 3200, oldPrice: null, unit: "2 pcs",   badge: "New",     badgeType: "new",    bg: "#fdf4ff", rating: 4, reviews: 34  },
 
   // ─── Baby Clothing ───────────────────────────────────────────────────────────
-  { id: 701, name: "Newborn Onesie Set",         category: "Baby Clothing", subcat: "0-3 months",  price: 850,  oldPrice: 1000, unit: "3 pcs",   badge: "Sale",    badgeType: "sale",   bg: "#fff7f0", rating: 5, reviews: 88  },
-  { id: 702, name: "Baby Romper",                category: "Baby Clothing", subcat: "3-6 months",  price: 550,  oldPrice: null, unit: "1 piece", badge: "New",     badgeType: "new",    bg: "#f0faf4", rating: 4, reviews: 54  },
-  { id: 703, name: "Winter Baby Suit",           category: "Baby Clothing", subcat: "6-12 months", price: 1200, oldPrice: 1400, unit: "2 pcs",   badge: "14% off", badgeType: "sale",   bg: "#fff7f0", rating: 5, reviews: 72  },
-  { id: 704, name: "Toddler T-Shirt Pack",       category: "Baby Clothing", subcat: "1-2 years",   price: 750,  oldPrice: null, unit: "3 pcs",   badge: null,      badgeType: null,     bg: "#f4f4f4", rating: 4, reviews: 39  },
-  { id: 705, name: "Baby Frock",                 category: "Baby Clothing", subcat: "6-12 months", price: 680,  oldPrice: 800,  unit: "1 piece", badge: "15% off", badgeType: "sale",   bg: "#fdf4ff", rating: 5, reviews: 63  },
-  { id: 706, name: "Infant Sleepsuit",           category: "Baby Clothing", subcat: "0-3 months",  price: 480,  oldPrice: null, unit: "1 piece", badge: "New",     badgeType: "new",    bg: "#fff7f0", rating: 4, reviews: 27  },
+  { id: 701, name: "Newborn Onesie Set",         category: "Baby Clothing", subcat: "0-3 months",  price: 850,  oldPrice: 1000, unit: "3 pcs",   badge: "Sale",    badgeType: "sale",   bg: "#fff7f0", rating: 5, reviews: 88, image: "/images/baby-clothing/newborn-onesie-set.png"  },
+  { id: 702, name: "Baby Romper",                category: "Baby Clothing", subcat: "3-6 months",  price: 550,  oldPrice: null, unit: "1 piece", badge: "New",     badgeType: "new",    bg: "#f0faf4", rating: 4, reviews: 54, image: "/images/baby-clothing/baby-romper.png"          },
+  { id: 703, name: "Winter Baby Suit",           category: "Baby Clothing", subcat: "6-12 months", price: 1200, oldPrice: 1400, unit: "2 pcs",   badge: "14% off", badgeType: "sale",   bg: "#fff7f0", rating: 5, reviews: 72, image: "/images/baby-clothing/winter-baby-suit.png"     },
+  { id: 704, name: "Toddler T-Shirt Pack",       category: "Baby Clothing", subcat: "1-2 years",   price: 750,  oldPrice: null, unit: "3 pcs",   badge: null,      badgeType: null,     bg: "#f4f4f4", rating: 4, reviews: 39, image: "/images/baby-clothing/toddler-tshirt-pack.png"  },
+  { id: 705, name: "Baby Frock",                 category: "Baby Clothing", subcat: "6-12 months", price: 680,  oldPrice: 800,  unit: "1 piece", badge: "15% off", badgeType: "sale",   bg: "#fdf4ff", rating: 5, reviews: 63, image: "/images/baby-clothing/baby-frock.png"           },
+  { id: 706, name: "Infant Sleepsuit",           category: "Baby Clothing", subcat: "0-3 months",  price: 480,  oldPrice: null, unit: "1 piece", badge: "New",     badgeType: "new",    bg: "#fff7f0", rating: 4, reviews: 27, image: "/images/baby-clothing/infant-sleepsuit.png"     },
 
   // ─── Jewellery ───────────────────────────────────────────────────────────────
   { id: 801, name: "Gold Plated Earrings",       category: "Jewellery", subcat: "Earrings", price: 850,  oldPrice: 1000, unit: "1 pair",  badge: "15% off", badgeType: "sale",   bg: "#fffbeb", rating: 5, reviews: 96  },
