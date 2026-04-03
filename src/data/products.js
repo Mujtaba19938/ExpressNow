@@ -82,12 +82,12 @@ export const products = [
   { id: 706, name: "Infant Sleepsuit",           category: "Baby Clothing", subcat: "0-3 months",  price: 480,  oldPrice: null, unit: "1 piece", badge: "New",     badgeType: "new",    bg: "#fff7f0", rating: 4, reviews: 27, image: "/images/baby-clothing/infant-sleepsuit.png"     },
 
   // ─── Jewellery ───────────────────────────────────────────────────────────────
-  { id: 801, name: "Gold Plated Earrings",       category: "Jewellery", subcat: "Earrings", price: 850,  oldPrice: 1000, unit: "1 pair",  badge: "15% off", badgeType: "sale",   bg: "#fffbeb", rating: 5, reviews: 96  },
-  { id: 802, name: "Silver Necklace Set",        category: "Jewellery", subcat: "Necklace", price: 2200, oldPrice: null, unit: "1 set",   badge: "New",     badgeType: "new",    bg: "#fffbeb", rating: 5, reviews: 78  },
-  { id: 803, name: "Kundan Bangles Set",         category: "Jewellery", subcat: "Bangles",  price: 1500, oldPrice: 1800, unit: "12 pcs",  badge: "17% off", badgeType: "sale",   bg: "#fffbeb", rating: 4, reviews: 54  },
-  { id: 804, name: "Stone Ring",                 category: "Jewellery", subcat: "Rings",    price: 650,  oldPrice: null, unit: "1 piece", badge: null,      badgeType: null,     bg: "#fffbeb", rating: 4, reviews: 38  },
-  { id: 805, name: "Pearl Choker Necklace",      category: "Jewellery", subcat: "Necklace", price: 3200, oldPrice: 3800, unit: "1 piece", badge: "16% off", badgeType: "sale",   bg: "#fffbeb", rating: 5, reviews: 42  },
-  { id: 806, name: "Oxidized Jhumka Earrings",   category: "Jewellery", subcat: "Earrings", price: 480,  oldPrice: null, unit: "1 pair",  badge: "New",     badgeType: "new",    bg: "#fffbeb", rating: 4, reviews: 65  },
+  { id: 801, name: "Gold Plated Earrings",       category: "Jewellery", subcat: "Earrings", price: 850,  oldPrice: 1000, unit: "1 pair",  badge: "15% off", badgeType: "sale",   bg: "#fffbeb", rating: 5, reviews: 96, image: "/images/jewellery/gold-plated-earrings.png"    },
+  { id: 802, name: "Silver Necklace Set",        category: "Jewellery", subcat: "Necklace", price: 2200, oldPrice: null, unit: "1 set",   badge: "New",     badgeType: "new",    bg: "#fffbeb", rating: 5, reviews: 78, image: "/images/jewellery/silver-necklace-set.png"     },
+  { id: 803, name: "Kundan Bangles Set",         category: "Jewellery", subcat: "Bangles",  price: 1500, oldPrice: 1800, unit: "12 pcs",  badge: "17% off", badgeType: "sale",   bg: "#fffbeb", rating: 4, reviews: 54, image: "/images/jewellery/kundan-bangles-set.png"      },
+  { id: 804, name: "Stone Ring",                 category: "Jewellery", subcat: "Rings",    price: 650,  oldPrice: null, unit: "1 piece", badge: null,      badgeType: null,     bg: "#fffbeb", rating: 4, reviews: 38, image: "/images/jewellery/stone-ring.png"              },
+  { id: 805, name: "Pearl Choker Necklace",      category: "Jewellery", subcat: "Necklace", price: 3200, oldPrice: 3800, unit: "1 piece", badge: "16% off", badgeType: "sale",   bg: "#fffbeb", rating: 5, reviews: 42, image: "/images/jewellery/pearl-choker-necklace.png"   },
+  { id: 806, name: "Oxidized Jhumka Earrings",   category: "Jewellery", subcat: "Earrings", price: 480,  oldPrice: null, unit: "1 pair",  badge: "New",     badgeType: "new",    bg: "#fffbeb", rating: 4, reviews: 65, image: "/images/jewellery/oxidized-jhumka-earrings.png" },
 
   // ─── Handbags ────────────────────────────────────────────────────────────────
   { id: 901, name: "Ladies Tote Bag",            category: "Handbags", subcat: "Tote",     price: 1800, oldPrice: 2200, unit: "1 piece", badge: "18% off", badgeType: "sale",   bg: "#fdf4ff", rating: 5, reviews: 84  },
