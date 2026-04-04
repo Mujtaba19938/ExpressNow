@@ -127,37 +127,45 @@ export default function ProductDetailPage({ setPage, cartCount, product: passedP
 
           <hr style={{ border: "none", borderTop: "0.5px solid rgba(0,0,0,0.1)", margin: "0 0 16px" }} />
 
-          {/* Weight */}
-          <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 8 }}>Select weight:</div>
-          <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
-            {["500g","1 kg","2 kg","5 kg"].map(w => (
-              <button key={w} onClick={() => setWeight(w)} style={{
-                padding: "7px 18px", borderRadius: 8,
-                border: `0.5px solid ${weight === w ? "#FF6B00" : "rgba(0,0,0,0.15)"}`,
-                background: weight === w ? "#FF6B00" : "#fff",
-                color: weight === w ? "#fff" : "#374151",
-                fontSize: 12, fontWeight: weight === w ? 600 : 400, cursor: "pointer",
-              }}>{w}</button>
-            ))}
-          </div>
+          {/* Weight — only for Fresh & Frozen */}
+          {product.category === "Fresh & Frozen" && (
+            <>
+              <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 8 }}>Select weight:</div>
+              <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
+                {["500g","1 kg","2 kg","5 kg"].map(w => (
+                  <button key={w} onClick={() => setWeight(w)} style={{
+                    padding: "7px 18px", borderRadius: 8,
+                    border: `0.5px solid ${weight === w ? "#FF6B00" : "rgba(0,0,0,0.15)"}`,
+                    background: weight === w ? "#FF6B00" : "#fff",
+                    color: weight === w ? "#fff" : "#374151",
+                    fontSize: 12, fontWeight: weight === w ? 600 : 400, cursor: "pointer",
+                  }}>{w}</button>
+                ))}
+              </div>
+            </>
+          )}
 
-          {/* Type */}
-          <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 8 }}>Type:</div>
-          <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
-            {["Fresh","Frozen"].map(t => (
-              <button key={t} onClick={() => setType(t)} style={{
-                padding: "7px 18px", borderRadius: 8,
-                border: `0.5px solid ${type === t ? "#22C55E" : "rgba(0,0,0,0.15)"}`,
-                background: type === t ? "#f0faf4" : "#fff",
-                color: type === t ? "#22C55E" : "#374151",
-                fontSize: 12, fontWeight: type === t ? 600 : 400, cursor: "pointer",
-                display: "flex", alignItems: "center", gap: 6,
-              }}>
-                <div style={{ width: 8, height: 8, borderRadius: "50%", background: t === "Fresh" ? "#22C55E" : "#3B82F6" }} />
-                {t}
-              </button>
-            ))}
-          </div>
+          {/* Type — only for Fresh & Frozen */}
+          {product.category === "Fresh & Frozen" && (
+            <>
+              <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 8 }}>Type:</div>
+              <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
+                {["Fresh","Frozen"].map(t => (
+                  <button key={t} onClick={() => setType(t)} style={{
+                    padding: "7px 18px", borderRadius: 8,
+                    border: `0.5px solid ${type === t ? "#22C55E" : "rgba(0,0,0,0.15)"}`,
+                    background: type === t ? "#f0faf4" : "#fff",
+                    color: type === t ? "#22C55E" : "#374151",
+                    fontSize: 12, fontWeight: type === t ? 600 : 400, cursor: "pointer",
+                    display: "flex", alignItems: "center", gap: 6,
+                  }}>
+                    <div style={{ width: 8, height: 8, borderRadius: "50%", background: t === "Fresh" ? "#22C55E" : "#3B82F6" }} />
+                    {t}
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
 
           {/* Quantity */}
           <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 8 }}>Quantity:</div>
