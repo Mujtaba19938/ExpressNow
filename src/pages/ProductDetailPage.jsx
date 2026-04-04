@@ -61,16 +61,6 @@ export default function ProductDetailPage({ setPage, cartCount, product: passedP
               padding: "3px 10px", borderRadius: 8, fontWeight: 600,
             }}>Fresh Today</span>
           </div>
-          <div style={{ display: "flex", gap: 8 }}>
-            {["🥩","🍖","🫙","📦"].map((thumb, i) => (
-              <div key={i} style={{
-                flex: 1, height: 68, background: "#fff",
-                border: `1.5px solid ${i === 0 ? "#FF6B00" : "rgba(0,0,0,0.1)"}`,
-                borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center",
-                cursor: "pointer", fontSize: 24,
-              }}>{thumb}</div>
-            ))}
-          </div>
         </div>
 
         {/* Info column */}
