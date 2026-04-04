@@ -55,11 +55,13 @@ export default function ProductDetailPage({ setPage, cartCount, product: passedP
             {product.image ? (
               <img src={product.image} alt={product.name} style={{ maxWidth: "80%", maxHeight: "80%", objectFit: "contain" }} />
             ) : "🛍️"}
-            <span style={{
-              position: "absolute", top: 12, left: 12,
-              background: "#22C55E", color: "#fff", fontSize: 11,
-              padding: "3px 10px", borderRadius: 8, fontWeight: 600,
-            }}>Fresh Today</span>
+            {product.category === "Fresh & Frozen" && (
+              <span style={{
+                position: "absolute", top: 12, left: 12,
+                background: "#22C55E", color: "#fff", fontSize: 11,
+                padding: "3px 10px", borderRadius: 8, fontWeight: 600,
+              }}>Fresh Today</span>
+            )}
           </div>
         </div>
 
