@@ -19,9 +19,11 @@ export default function CartCheckoutPage({ setPage, cart, cartCount, updateQty, 
   const subtotal = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
   const itemDiscount = cart.reduce((sum, i) => i.oldPrice ? sum + (i.oldPrice - i.price) * i.qty : sum, 0);
   const couponDiscount = couponApplied ? COUPON_DISCOUNT : 0;
-  const deliveryFee = subtotal >= FREE_DELIVERY_THRESHOLD || deliveryMethod === "standard" ? 0
-    : deliveryMethod === "express" ? 249 : DELIVERY_FEE;
-  const total = subtotal - couponDiscount + deliveryFee;
+  const deliveryFee = deliveryMethod === "express" ? 249
+    : deliveryMethod === "standard" ? 0
+    : subtotal >= FREE_DELIVERY_THRESHOLD ? 0
+    : DELIVERY_FEE;
+  const total = subtotal - itemDiscount - couponDiscount + deliveryFee;
 
   const applyCoupon = () => {
     if (coupon.trim().toUpperCase() === COUPON_CODE) {
