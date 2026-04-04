@@ -15,6 +15,7 @@ export default function CartCheckoutPage({ setPage, cart, cartCount, updateQty, 
   const [deliveryMethod, setDeliveryMethod] = useState("same-day");
   const [paymentMethod, setPaymentMethod] = useState("cod");
   const [step] = useState(2);
+  const [orderPlaced, setOrderPlaced] = useState(false);
 
   const subtotal = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
   const itemDiscount = cart.reduce((sum, i) => i.oldPrice ? sum + (i.oldPrice - i.price) * i.qty : sum, 0);
@@ -277,7 +278,7 @@ export default function CartCheckoutPage({ setPage, cart, cartCount, updateQty, 
               <span style={{ fontSize: 20, fontWeight: 700, color: "#FF6B00" }}>Rs. {total.toLocaleString()}</span>
             </div>
             <div style={{ padding: "14px 16px 16px" }}>
-              <button style={{
+              <button onClick={() => setOrderPlaced(true)} style={{
                 width: "100%", background: "#FF6B00", color: "#fff", border: "none",
                 padding: 14, borderRadius: 10, fontSize: 15, fontWeight: 700, cursor: "pointer", marginBottom: 10,
               }}>
@@ -300,6 +301,31 @@ export default function CartCheckoutPage({ setPage, cart, cartCount, updateQty, 
       </div>
 
       <Footer />
+
+      {orderPlaced && (
+        <div style={{
+          position: "fixed", inset: 0, background: "rgba(0,0,0,0.45)",
+          display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000,
+        }}>
+          <div style={{
+            background: "#fff", borderRadius: 16, padding: "36px 32px",
+            maxWidth: 380, width: "90%", textAlign: "center",
+            boxShadow: "0 8px 40px rgba(0,0,0,0.18)",
+          }}>
+            <div style={{ fontSize: 52, marginBottom: 12 }}>🎉</div>
+            <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 10, color: "#1A1A2E" }}>Order Placed!</h2>
+            <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.6, marginBottom: 24 }}>
+              Your order has been placed. You will be contacted shortly through your given number.
+            </p>
+            <button onClick={() => { setOrderPlaced(false); setPage("home"); }} style={{
+              background: "#FF6B00", color: "#fff", border: "none",
+              padding: "12px 32px", borderRadius: 10, fontSize: 14, fontWeight: 700, cursor: "pointer",
+            }}>
+              Back to Home
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
