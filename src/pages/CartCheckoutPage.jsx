@@ -21,7 +21,6 @@ export default function CartCheckoutPage({ setPage, cart, cartCount, updateQty, 
   const couponDiscount = couponApplied ? COUPON_DISCOUNT : 0;
   const deliveryFee = deliveryMethod === "express" ? 249
     : deliveryMethod === "standard" ? 0
-    : subtotal >= FREE_DELIVERY_THRESHOLD ? 0
     : DELIVERY_FEE;
   const total = subtotal - itemDiscount - couponDiscount + deliveryFee;
 
