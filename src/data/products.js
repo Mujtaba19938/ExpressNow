@@ -98,12 +98,12 @@ export const products = [
   { id: 906, name: "Casual Canvas Tote",         category: "Handbags", subcat: "Tote",     price: 780,  oldPrice: null, unit: "1 piece", badge: "New",     badgeType: "new",    bg: "#f4f4f4", rating: 4, reviews: 29,  image: "/images/handbags/casual-canvas-tote.png"    },
 
   // ─── Perfumes ────────────────────────────────────────────────────────────────
-  { id: 1001, name: "Oud Al Qamar 100ml",        category: "Perfumes", subcat: "Oriental", price: 3500, oldPrice: 4000, unit: "100ml",    badge: "13% off", badgeType: "sale",   bg: "#fdf2f8", rating: 5, reviews: 115 },
-  { id: 1002, name: "Rose Bouquet EDP 50ml",     category: "Perfumes", subcat: "Floral",   price: 2200, oldPrice: null, unit: "50ml",     badge: "New",     badgeType: "new",    bg: "#fdf2f8", rating: 5, reviews: 89  },
-  { id: 1003, name: "Blue Musk EDT 75ml",        category: "Perfumes", subcat: "Fresh",    price: 1800, oldPrice: 2100, unit: "75ml",     badge: "14% off", badgeType: "sale",   bg: "#fdf2f8", rating: 4, reviews: 67  },
-  { id: 1004, name: "Sandalwood Attar 10ml",     category: "Perfumes", subcat: "Woody",    price: 950,  oldPrice: null, unit: "10ml",     badge: null,      badgeType: null,     bg: "#fffbeb", rating: 4, reviews: 48  },
-  { id: 1005, name: "Body Spray 4-Pack",         category: "Perfumes", subcat: "Fresh",    price: 1200, oldPrice: 1500, unit: "4x200ml",  badge: "20% off", badgeType: "sale",   bg: "#fdf2f8", rating: 4, reviews: 73  },
-  { id: 1006, name: "Swiss Arabian Warda 50ml",  category: "Perfumes", subcat: "Oriental", price: 4200, oldPrice: null, unit: "50ml",     badge: "New",     badgeType: "new",    bg: "#fdf2f8", rating: 5, reviews: 92  },
+  { id: 1001, name: "Oud Al Qamar 100ml",        category: "Perfumes", subcat: "Oriental", price: 3500, oldPrice: 4000, unit: "100ml",    badge: "13% off", badgeType: "sale",   bg: "#fdf2f8", rating: 5, reviews: 115, image: "/images/perfumes/oud-al-qamar.png"        },
+  { id: 1002, name: "Rose Bouquet EDP 50ml",     category: "Perfumes", subcat: "Floral",   price: 2200, oldPrice: null, unit: "50ml",     badge: "New",     badgeType: "new",    bg: "#fdf2f8", rating: 5, reviews: 89,  image: "/images/perfumes/rose-bouquet.png"         },
+  { id: 1003, name: "Blue Musk EDT 75ml",        category: "Perfumes", subcat: "Fresh",    price: 1800, oldPrice: 2100, unit: "75ml",     badge: "14% off", badgeType: "sale",   bg: "#fdf2f8", rating: 4, reviews: 67,  image: "/images/perfumes/blue-musk.png"            },
+  { id: 1004, name: "Sandalwood Attar 10ml",     category: "Perfumes", subcat: "Woody",    price: 950,  oldPrice: null, unit: "10ml",     badge: null,      badgeType: null,     bg: "#fffbeb", rating: 4, reviews: 48,  image: "/images/perfumes/sandalwood-attar.png"     },
+  { id: 1005, name: "Body Spray 4-Pack",         category: "Perfumes", subcat: "Fresh",    price: 1200, oldPrice: 1500, unit: "4x200ml",  badge: "20% off", badgeType: "sale",   bg: "#fdf2f8", rating: 4, reviews: 73,  image: "/images/perfumes/body-spray-4pack.png"     },
+  { id: 1006, name: "Swiss Arabian Warda 50ml",  category: "Perfumes", subcat: "Oriental", price: 4200, oldPrice: null, unit: "50ml",     badge: "New",     badgeType: "new",    bg: "#fdf2f8", rating: 5, reviews: 92,  image: "/images/perfumes/swiss-arabian-warda.png" },
 ];
 
 export const deliveryZones = [
