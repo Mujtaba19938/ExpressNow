@@ -105,8 +105,12 @@ export default function CartCheckoutPage({ setPage, cart, cartCount, updateQty, 
                 <div style={{
                   width: 68, height: 68, borderRadius: 10, background: "#f0faf4",
                   display: "flex", alignItems: "center", justifyContent: "center",
-                  fontSize: 28, flexShrink: 0,
-                }}>🥩</div>
+                  fontSize: 28, flexShrink: 0, overflow: "hidden",
+                }}>
+                  {item.image
+                    ? <img src={item.image} alt={item.name} style={{ width: "100%", height: "100%", objectFit: "contain", padding: 6 }} />
+                    : "🛍️"}
+                </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ fontSize: 10, color: "#FF6B00", textTransform: "uppercase", letterSpacing: "0.3px" }}>{item.subcat}</div>
                   <div style={{ fontSize: 13, fontWeight: 600, margin: "2px 0" }}>{item.name}</div>
