@@ -341,6 +341,7 @@ export default function Navbar({
             </button>
           </div>
           <Sidebar
+            hideHeader
             activeCategory={activeCategory}
             onSelect={(cat) => {
               if (onCategorySelect) onCategorySelect("listing", cat);

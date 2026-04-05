@@ -13,7 +13,7 @@ const sidebarItems = [
   { label: "Perfumes" },
 ];
 
-export default function Sidebar({ activeCategory, onSelect }) {
+export default function Sidebar({ activeCategory, onSelect, hideHeader = false }) {
   return (
     <aside style={{
       width: 210,
@@ -23,19 +23,21 @@ export default function Sidebar({ activeCategory, onSelect }) {
       overflow: "hidden",
     }}>
       {/* Header */}
-      <div style={{
-        background: "#FF6B00",
-        padding: "11px 14px",
-        fontSize: 13,
-        fontWeight: 600,
-        color: "#fff",
-        display: "flex",
-        alignItems: "center",
-        gap: 8,
-      }}>
-        <Menu size={16} color="#fff" />
-        Shop Categories
-      </div>
+      {!hideHeader && (
+        <div style={{
+          background: "#FF6B00",
+          padding: "11px 14px",
+          fontSize: 13,
+          fontWeight: 600,
+          color: "#fff",
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
+        }}>
+          <Menu size={16} color="#fff" />
+          Shop Categories
+        </div>
+      )}
 
       {/* Items */}
       {sidebarItems.map((item) => (
