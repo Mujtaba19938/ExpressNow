@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Minus, Plus, X, Lock, CheckCircle } from "lucide-react";
 import { deliveryZones, paymentMethods } from "../data/products";
+import useWindowWidth from "../hooks/useWindowWidth";
 
 const DELIVERY_FEE = 99;
 const FREE_DELIVERY_THRESHOLD = 1500;
@@ -16,6 +17,9 @@ export default function CartCheckoutPage({ setPage, cart, cartCount, updateQty, 
   const [paymentMethod, setPaymentMethod] = useState("cod");
   const [step] = useState(2);
   const [orderPlaced, setOrderPlaced] = useState(false);
+
+  const width = useWindowWidth();
+  const isMobile = width < 768;
 
   const subtotal = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
   const itemDiscount = cart.reduce((sum, i) => i.oldPrice ? sum + (i.oldPrice - i.price) * i.qty : sum, 0);
@@ -85,15 +89,15 @@ export default function CartCheckoutPage({ setPage, cart, cartCount, updateQty, 
         ))}
       </div>
 
-      <div style={{ display: "flex", gap: 14, padding: "0 16px 28px", maxWidth: 1232, margin: "0 auto" }}>
+      <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 12 : 14, padding: isMobile ? "0 12px 28px" : "0 16px 28px", maxWidth: 1232, margin: "0 auto" }}>
         {/* Left col */}
         <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: 12 }}>
 
           {/* Cart items */}
           <div style={{ background: "#fff", border: "0.5px solid rgba(0,0,0,0.1)", borderRadius: 14, overflow: "hidden" }}>
-            <div style={{ padding: "12px 16px", borderBottom: "0.5px solid rgba(0,0,0,0.08)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div style={{ padding: isMobile ? "10px 12px" : "12px 16px", borderBottom: "0.5px solid rgba(0,0,0,0.08)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: isMobile ? "wrap" : "nowrap", gap: isMobile ? 6 : 0 }}>
               <h3 style={{ fontSize: 14, fontWeight: 600 }}>Your cart ({cartCount} items)</h3>
-              <span onClick={() => setPage("home")} style={{ fontSize: 12, color: "#FF6B00", cursor: "pointer" }}>Continue shopping</span>
+              <span onClick={() => setPage("home")} style={{ fontSize: isMobile ? 11 : 12, color: "#FF6B00", cursor: "pointer" }}>Continue shopping</span>
             </div>
             {cart.length === 0 && (
               <div style={{ padding: "40px 16px", textAlign: "center", color: "#9CA3AF", fontSize: 14 }}>
@@ -101,9 +105,9 @@ export default function CartCheckoutPage({ setPage, cart, cartCount, updateQty, 
               </div>
             )}
             {cart.map(item => (
-              <div key={item.id} style={{ display: "flex", alignItems: "center", gap: 14, padding: "14px 16px", borderBottom: "0.5px solid rgba(0,0,0,0.06)" }}>
+              <div key={item.id} style={{ display: "flex", flexWrap: isMobile ? "wrap" : "nowrap", alignItems: isMobile ? "flex-start" : "center", gap: isMobile ? 10 : 14, padding: isMobile ? "12px 12px" : "14px 16px", borderBottom: "0.5px solid rgba(0,0,0,0.06)" }}>
                 <div style={{
-                  width: 68, height: 68, borderRadius: 10, background: "#f0faf4",
+                  width: isMobile ? 64 : 68, height: isMobile ? 64 : 68, borderRadius: 10, background: "#f0faf4",
                   display: "flex", alignItems: "center", justifyContent: "center",
                   fontSize: 28, flexShrink: 0, overflow: "hidden",
                 }}>
@@ -121,7 +125,7 @@ export default function CartCheckoutPage({ setPage, cart, cartCount, updateQty, 
                     </span>
                   )}
                 </div>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 8 }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 8, marginLeft: isMobile ? "auto" : undefined }}>
                   <div>
                     <div style={{ fontSize: 15, fontWeight: 700, color: "#FF6B00" }}>Rs. {(item.price * item.qty).toLocaleString()}</div>
                     {item.oldPrice && <div style={{ fontSize: 10, color: "#9CA3AF", textDecoration: "line-through" }}>Rs. {(item.oldPrice * item.qty).toLocaleString()}</div>}
@@ -167,26 +171,26 @@ export default function CartCheckoutPage({ setPage, cart, cartCount, updateQty, 
             <div style={{ padding: "12px 16px", borderBottom: "0.5px solid rgba(0,0,0,0.08)" }}>
               <h3 style={{ fontSize: 14, fontWeight: 600 }}>Delivery information</h3>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, padding: "16px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 16 : 12, padding: isMobile ? "14px 12px" : "16px" }}>
               {[
                 { label: "Full name", placeholder: "Ahmed Ali", full: false },
                 { label: "Phone number", placeholder: "+92 300 0000000", full: false },
                 { label: "Full address", placeholder: "House #, Street, Block, Area...", full: true },
               ].map(field => (
-                <div key={field.label} style={{ gridColumn: field.full ? "1 / -1" : "auto" }}>
+                <div key={field.label} style={{ gridColumn: (field.full || isMobile) ? "1 / -1" : "auto" }}>
                   <label style={{ fontSize: 11, fontWeight: 600, color: "#6B7280", display: "block", marginBottom: 4 }}>{field.label}</label>
-                  <input placeholder={field.placeholder} style={{ width: "100%", border: "0.5px solid rgba(0,0,0,0.2)", borderRadius: 8, padding: "9px 12px", fontSize: 13, outline: "none" }} />
+                  <input placeholder={field.placeholder} style={{ width: "100%", border: "0.5px solid rgba(0,0,0,0.2)", borderRadius: 8, padding: isMobile ? "10px 12px" : "9px 12px", fontSize: 13, outline: "none", minHeight: isMobile ? 44 : undefined, boxSizing: "border-box" }} />
                 </div>
               ))}
               <div>
                 <label style={{ fontSize: 11, fontWeight: 600, color: "#6B7280", display: "block", marginBottom: 4 }}>City</label>
-                <select style={{ width: "100%", border: "0.5px solid rgba(0,0,0,0.2)", borderRadius: 8, padding: "9px 12px", fontSize: 13, outline: "none" }}>
+                <select style={{ width: "100%", border: "0.5px solid rgba(0,0,0,0.2)", borderRadius: 8, padding: isMobile ? "10px 12px" : "9px 12px", fontSize: 13, outline: "none", minHeight: isMobile ? 44 : undefined }}>
                   <option>Karachi</option>
                 </select>
               </div>
               <div>
                 <label style={{ fontSize: 11, fontWeight: 600, color: "#6B7280", display: "block", marginBottom: 4 }}>Area / Zone</label>
-                <select style={{ width: "100%", border: "0.5px solid rgba(0,0,0,0.2)", borderRadius: 8, padding: "9px 12px", fontSize: 13, outline: "none" }}>
+                <select style={{ width: "100%", border: "0.5px solid rgba(0,0,0,0.2)", borderRadius: 8, padding: isMobile ? "10px 12px" : "9px 12px", fontSize: 13, outline: "none", minHeight: isMobile ? 44 : undefined }}>
                   <option value="">Select area</option>
                   {deliveryZones.map(z => <option key={z}>{z}</option>)}
                 </select>
@@ -254,7 +258,7 @@ export default function CartCheckoutPage({ setPage, cart, cartCount, updateQty, 
         </div>
 
         {/* Order summary */}
-        <div style={{ width: 300, flexShrink: 0, alignSelf: "flex-start", position: "sticky", top: 100 }}>
+        <div style={{ width: isMobile ? "100%" : 300, flexShrink: 0, alignSelf: isMobile ? "auto" : "flex-start", position: isMobile ? "static" : "sticky", top: 100 }}>
           <div style={{ background: "#fff", border: "0.5px solid rgba(0,0,0,0.1)", borderRadius: 14, overflow: "hidden", marginBottom: 12 }}>
             <div style={{ padding: "12px 16px", borderBottom: "0.5px solid rgba(0,0,0,0.08)" }}>
               <h3 style={{ fontSize: 14, fontWeight: 600 }}>Order summary</h3>
