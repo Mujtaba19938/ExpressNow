@@ -100,8 +100,6 @@ export default function Navbar({ cartCount = 0, onNavigate }) {
           {onNavigate && (
             <div style={{ display: "flex", gap: 16, marginRight: 8, borderRight: "1px solid #eee", paddingRight: 16 }}>
               <button onClick={() => onNavigate('home')} style={{ background: "none", border: "none", fontSize: 13, fontWeight: 600, color: "#111", cursor: "pointer", padding: 0 }}>Home</button>
-              <button onClick={() => onNavigate('listing')} style={{ background: "none", border: "none", fontSize: 13, fontWeight: 600, color: "#111", cursor: "pointer", padding: 0 }}>Products</button>
-              <button onClick={() => onNavigate('detail')} style={{ background: "none", border: "none", fontSize: 13, fontWeight: 600, color: "#111", cursor: "pointer", padding: 0 }}>Details</button>
             </div>
           )}
 
