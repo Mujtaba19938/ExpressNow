@@ -26,12 +26,12 @@ export const subTagsMap = {
 
 export const products = [
   // ─── General Store ───────────────────────────────────────────────────────────
-  { id: 101, name: "Surf Excel 1kg",             category: "General Store", subcat: "Detergent",     price: 350,  oldPrice: 400,  unit: "1kg box",   badge: "Sale",    badgeType: "sale",   bg: "#fff7f0", rating: 4, reviews: 88  },
-  { id: 102, name: "Lifebuoy Soap (Pack of 4)",  category: "General Store", subcat: "Personal Care", price: 280,  oldPrice: 320,  unit: "4 bars",    badge: "New",     badgeType: "new",    bg: "#f0faf4", rating: 4, reviews: 52  },
-  { id: 103, name: "Scotch Brite Sponge",        category: "General Store", subcat: "Kitchen",       price: 90,   oldPrice: null, unit: "2 pcs",     badge: null,      badgeType: null,     bg: "#f4f4f4", rating: 3, reviews: 34  },
-  { id: 104, name: "Ariel Liquid 1.5L",          category: "General Store", subcat: "Detergent",     price: 620,  oldPrice: 680,  unit: "1.5 litre", badge: "10% off", badgeType: "sale",   bg: "#fff7f0", rating: 5, reviews: 74  },
+  { id: 101, name: "Surf Excel 1kg",             category: "General Store", subcat: "Detergent",     price: 350,  oldPrice: 400,  unit: "1kg box",   badge: "Sale",    badgeType: "sale",   bg: "#fff7f0", rating: 4, reviews: 88,  image: "/images/general-store/surf-excel.png"         },
+  { id: 102, name: "Lifebuoy Soap (Pack of 4)",  category: "General Store", subcat: "Personal Care", price: 280,  oldPrice: 320,  unit: "4 bars",    badge: "New",     badgeType: "new",    bg: "#f0faf4", rating: 4, reviews: 52,  image: "/images/general-store/lifebuoy-soap.png"      },
+  { id: 103, name: "Scotch Brite Sponge",        category: "General Store", subcat: "Kitchen",       price: 90,   oldPrice: null, unit: "2 pcs",     badge: null,      badgeType: null,     bg: "#f4f4f4", rating: 3, reviews: 34,  image: "/images/general-store/scotch-brite-sponge.png" },
+  { id: 104, name: "Ariel Liquid 1.5L",          category: "General Store", subcat: "Detergent",     price: 620,  oldPrice: 680,  unit: "1.5 litre", badge: "10% off", badgeType: "sale",   bg: "#fff7f0", rating: 5, reviews: 74,  image: "/images/general-store/ariel-liquid.png"       },
   { id: 105, name: "Colgate Toothpaste 120ml",   category: "General Store", subcat: "Personal Care", price: 150,  oldPrice: null, unit: "120ml",     badge: null,      badgeType: null,     bg: "#eff6ff", rating: 4, reviews: 120 },
-  { id: 106, name: "Tissue Roll (12 pcs)",       category: "General Store", subcat: "Household",     price: 360,  oldPrice: 400,  unit: "12 rolls",  badge: "10% off", badgeType: "sale",   bg: "#f4f4f4", rating: 4, reviews: 65  },
+  { id: 106, name: "Tissue Roll (12 pcs)",       category: "General Store", subcat: "Household",     price: 360,  oldPrice: 400,  unit: "12 rolls",  badge: "10% off", badgeType: "sale",   bg: "#f4f4f4", rating: 4, reviews: 65,  image: "/images/general-store/tissue-roll.png"        },
 
   // ─── Grocery ─────────────────────────────────────────────────────────────────
   { id: 201, name: "Basmati Rice 5kg",           category: "Grocery",       subcat: "Rice",          price: 950,  oldPrice: 1050, unit: "5kg bag",   badge: "10% off", badgeType: "sale",   bg: "#f4f4f4", rating: 4, reviews: 62,  image: "/images/grocery/basmati-rice.png"     },
