@@ -323,25 +323,27 @@ export default function Navbar({
 
       {/* Mobile drawer */}
       <MobileDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} side="left">
-        <div style={{ padding: "0 0 24px" }}>
+        <div>
           {/* Drawer header */}
           <div style={{
             background: "#FF6B00",
-            padding: "14px 16px",
+            padding: "0 16px",
+            height: 64,
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
           }}>
-            <span style={{ fontSize: 15, fontWeight: 700, color: "#fff" }}>Shop Categories</span>
+            <span style={{ fontSize: 17, fontWeight: 700, color: "#fff", letterSpacing: "-0.2px" }}>Shop Categories</span>
             <button
               onClick={() => setDrawerOpen(false)}
-              style={{ background: "none", border: "none", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", width: 32, height: 32 }}
+              style={{ background: "none", border: "none", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, cursor: "pointer" }}
             >
-              <X size={20} />
+              <X size={22} />
             </button>
           </div>
           <Sidebar
             hideHeader
+            inDrawer
             activeCategory={activeCategory}
             onSelect={(cat) => {
               if (onCategorySelect) onCategorySelect("listing", cat);
