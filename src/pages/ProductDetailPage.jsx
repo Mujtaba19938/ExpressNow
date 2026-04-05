@@ -18,7 +18,7 @@ const defaultReviews = [
   { name: "Hassan Khan", rating: 5, date: "1 week ago", text: "Best quality in Karachi. Express Now delivers on time every time." },
 ];
 
-export default function ProductDetailPage({ setPage, cartCount, product: passedProduct, addToCart }) {
+export default function ProductDetailPage({ setPage, cartCount, product: passedProduct, addToCart, onSearch }) {
   const product = passedProduct || { id: 0, name: "Product", category: "General", subcat: "", price: 0, rating: 0, reviews: 0 };
   const [qty, setQty] = useState(1);
   const [weight, setWeight] = useState("1 kg");
@@ -36,7 +36,7 @@ export default function ProductDetailPage({ setPage, cartCount, product: passedP
 
   return (
     <div style={{ background: "#F8F8F8", minHeight: "100vh" }}>
-      <Navbar cartCount={cartCount} onNavigate={setPage} />
+      <Navbar cartCount={cartCount} onNavigate={setPage} onSearch={onSearch} />
 
       <div style={{ padding: "10px 16px", fontSize: 12, color: "#6B7280" }}>
         <span onClick={() => setPage("home")} style={{ cursor: "pointer", color: "#FF6B00" }}>Home</span> › {product.category} › <span style={{ color: "#FF6B00" }}>{product.name}</span>

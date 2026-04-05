@@ -10,10 +10,32 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState("General Store");
   const [cart, setCart] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchCategory, setSearchCategory] = useState(null);
 
   const navigateTo = (pageName, category = null) => {
     setPage(pageName);
     if (category !== null) setSelectedCategory(category);
+  };
+
+  const categoryMap = {
+    "Grocery": "Grocery",
+    "Snacks": "Edible / Snacks",
+    "Fresh & Frozen": "Fresh & Frozen",
+    "General Store": "General Store",
+  };
+
+  const handleSearch = (query, catLabel) => {
+    const mappedCat = categoryMap[catLabel] || null;
+    setSearchQuery(query);
+    setSearchCategory(mappedCat);
+    if (mappedCat) setSelectedCategory(mappedCat);
+    setPage("listing");
+  };
+
+  const clearSearch = () => {
+    setSearchQuery("");
+    setSearchCategory(null);
   };
 
   const viewProduct = (product) => {
@@ -42,20 +64,24 @@ export default function App() {
   return (
     <div>
       {page === "home" && (
-        <HomePage setPage={navigateTo} cartCount={cartCount} addToCart={addToCart} viewProduct={viewProduct} />
+        <HomePage setPage={navigateTo} cartCount={cartCount} addToCart={addToCart} viewProduct={viewProduct} onSearch={handleSearch} />
       )}
       {page === "listing" && (
         <ProductListingPage
           setPage={navigateTo}
           selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
+          setSelectedCategory={(cat) => { clearSearch(); setSelectedCategory(cat); }}
           cartCount={cartCount}
           addToCart={addToCart}
           viewProduct={viewProduct}
+          onSearch={handleSearch}
+          searchQuery={searchQuery}
+          searchCategory={searchCategory}
+          onClearSearch={clearSearch}
         />
       )}
       {page === "detail" && (
-        <ProductDetailPage setPage={navigateTo} cartCount={cartCount} product={selectedProduct} addToCart={addToCart} />
+        <ProductDetailPage setPage={navigateTo} cartCount={cartCount} product={selectedProduct} addToCart={addToCart} onSearch={handleSearch} />
       )}
       {page === "cart" && (
         <CartCheckoutPage
@@ -64,6 +90,7 @@ export default function App() {
           cartCount={cartCount}
           updateQty={updateQty}
           removeFromCart={removeFromCart}
+          onSearch={handleSearch}
         />
       )}
     </div>

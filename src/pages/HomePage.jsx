@@ -12,14 +12,14 @@ const trustItems = [
   { icon: "📞", title: "24/7 Support",       sub: "WhatsApp & Call"      },
 ];
 
-export default function HomePage({ setPage, cartCount, addToCart, viewProduct }) {
+export default function HomePage({ setPage, cartCount, addToCart, viewProduct, onSearch }) {
   const [activeCategory, setActive] = useState(null);
 
   const goToListing = (cat) => setPage("listing", cat);
 
   return (
     <div style={{ background: "#F8F8F8", minHeight: "100vh" }}>
-      <Navbar cartCount={cartCount} onNavigate={setPage} />
+      <Navbar cartCount={cartCount} onNavigate={setPage} onSearch={onSearch} />
 
       <div style={{ display: "flex", gap: 14, padding: "14px 16px", maxWidth: 1232, margin: "0 auto", minHeight: "100vh", paddingBottom: 50 }}>
 

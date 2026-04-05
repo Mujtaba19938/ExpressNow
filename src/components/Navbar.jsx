@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { ShoppingBag, Search, Menu, X } from "lucide-react";
 
-export default function Navbar({ cartCount = 0, onNavigate }) {
+export default function Navbar({ cartCount = 0, onNavigate, onSearch }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [category, setCategory] = useState("All Categories");
+  const [query, setQuery] = useState("");
 
   return (
     <div style={{ position: "sticky", top: 0, zIndex: 100 }}>
@@ -68,6 +69,9 @@ export default function Navbar({ cartCount = 0, onNavigate }) {
           </select>
           <input
             type="text"
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+            onKeyDown={e => e.key === "Enter" && onSearch && onSearch(query, category)}
             placeholder="Search for products, brands, categories..."
             style={{
               border: "none",
@@ -79,17 +83,20 @@ export default function Navbar({ cartCount = 0, onNavigate }) {
               color: "#111",
             }}
           />
-          <button style={{
-            background: "#FF6B00",
-            border: "none",
-            padding: "0 18px",
-            color: "#fff",
-            fontSize: 13,
-            fontWeight: 600,
-            display: "flex",
-            alignItems: "center",
-            gap: 6,
-          }}>
+          <button
+            onClick={() => onSearch && onSearch(query, category)}
+            style={{
+              background: "#FF6B00",
+              border: "none",
+              padding: "0 18px",
+              color: "#fff",
+              fontSize: 13,
+              fontWeight: 600,
+              display: "flex",
+              alignItems: "center",
+              gap: 6,
+              cursor: "pointer",
+            }}>
             <Search size={14} />
             Search
           </button>

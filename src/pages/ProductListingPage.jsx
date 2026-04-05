@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import { products, subTagsMap } from "../data/products";
 import { Grid2X2, List } from "lucide-react";
 
-export default function ProductListingPage({ setPage, selectedCategory, setSelectedCategory, cartCount, addToCart, viewProduct }) {
+export default function ProductListingPage({ setPage, selectedCategory, setSelectedCategory, cartCount, addToCart, viewProduct, onSearch, searchQuery, searchCategory, onClearSearch }) {
   const [activeTag, setActiveTag]     = useState("All");
   const [sortBy, setSortBy]           = useState("Popularity");
   const [gridView, setGridView]       = useState(true);
@@ -20,11 +20,21 @@ export default function ProductListingPage({ setPage, selectedCategory, setSelec
 
   const filterTags = subTagsMap[selectedCategory] || ["All"];
 
-  // Filter by category, sub-tag, and price
+  // Filter by category, sub-tag, price, and search query
   const filtered = products
-    .filter(p => p.category === selectedCategory)
-    .filter(p => activeTag === "All" || p.subcat === activeTag)
+    .filter(p => {
+      if (searchQuery && !searchCategory) return true; // searching all categories
+      return p.category === selectedCategory;
+    })
+    .filter(p => {
+      if (searchQuery) return true; // skip sub-tag filter when searching
+      return activeTag === "All" || p.subcat === activeTag;
+    })
     .filter(p => p.price >= priceRange.min && p.price <= priceRange.max)
+    .filter(p => {
+      if (!searchQuery) return true;
+      return p.name.toLowerCase().includes(searchQuery.toLowerCase());
+    })
     .sort((a, b) => {
       if (sortBy === "Price: Low to High")  return a.price - b.price;
       if (sortBy === "Price: High to Low")  return b.price - a.price;
@@ -35,7 +45,7 @@ export default function ProductListingPage({ setPage, selectedCategory, setSelec
 
   return (
     <div style={{ background: "#F8F8F8", minHeight: "100vh" }}>
-      <Navbar cartCount={cartCount} onNavigate={setPage} />
+      <Navbar cartCount={cartCount} onNavigate={setPage} onSearch={onSearch} />
 
       {/* Breadcrumb */}
       <div style={{ padding: "10px 16px", fontSize: 12, color: "#6B7280" }}>
@@ -132,7 +142,12 @@ export default function ProductListingPage({ setPage, selectedCategory, setSelec
             <span style={{ fontSize: 13, color: "#6B7280" }}>
               Showing{" "}
               <strong style={{ color: "#111" }}>{filtered.length} products</strong>
-              {" "}in <strong style={{ color: "#FF6B00" }}>{selectedCategory}</strong>
+              {searchQuery
+                ? <>{" "}for <strong style={{ color: "#FF6B00" }}>"{searchQuery}"</strong>
+                    <button onClick={onClearSearch} style={{ marginLeft: 8, fontSize: 11, color: "#6B7280", background: "#f0f0f0", border: "none", borderRadius: 4, padding: "2px 8px", cursor: "pointer" }}>✕ Clear</button>
+                  </>
+                : <>{" "}in <strong style={{ color: "#FF6B00" }}>{selectedCategory}</strong></>
+              }
             </span>
             <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
               <select
