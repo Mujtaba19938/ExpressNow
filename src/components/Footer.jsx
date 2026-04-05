@@ -1,10 +1,16 @@
+import useWindowWidth from "../hooks/useWindowWidth";
+
 export default function Footer() {
+  const width = useWindowWidth();
+  const isMobile = width < 768;
+  const isTablet = width < 1024;
+
   return (
     <footer style={{ background: "#1A1A2E", padding: "28px 16px 16px" }}>
       <div style={{
         display: "grid",
-        gridTemplateColumns: "repeat(4, 1fr)",
-        gap: 24,
+        gridTemplateColumns: isMobile ? "1fr" : isTablet ? "repeat(2, 1fr)" : "repeat(4, 1fr)",
+        gap: isMobile ? 20 : 24,
         maxWidth: 1200,
         margin: "0 auto 24px",
       }}>
@@ -61,10 +67,13 @@ export default function Footer() {
         borderTop: "0.5px solid #2a2a40",
         paddingTop: 14,
         display: "flex",
+        flexDirection: isMobile ? "column" : "row",
         justifyContent: "space-between",
         alignItems: "center",
+        gap: isMobile ? 6 : 0,
         maxWidth: 1200,
         margin: "0 auto",
+        textAlign: isMobile ? "center" : "left",
       }}>
         <span style={{ fontSize: 11, color: "#555" }}>
           © 2025 ExpressNow. All rights reserved.

@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage";
 import ProductListingPage from "./pages/ProductListingPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import CartCheckoutPage from "./pages/CartCheckoutPage";
+import { categories } from "./data/products";
 import "./styles/global.css";
 
 export default function App() {
@@ -16,26 +17,6 @@ export default function App() {
   const navigateTo = (pageName, category = null) => {
     setPage(pageName);
     if (category !== null) setSelectedCategory(category);
-  };
-
-  const categoryMap = {
-    "Grocery": "Grocery",
-    "Snacks": "Edible / Snacks",
-    "Fresh & Frozen": "Fresh & Frozen",
-    "General Store": "General Store",
-  };
-
-  const handleSearch = (query, catLabel) => {
-    const mappedCat = categoryMap[catLabel] || null;
-    setSearchQuery(query);
-    setSearchCategory(mappedCat);
-    if (mappedCat) setSelectedCategory(mappedCat);
-    setPage("listing");
-  };
-
-  const clearSearch = () => {
-    setSearchQuery("");
-    setSearchCategory(null);
   };
 
   const viewProduct = (product) => {
@@ -61,10 +42,43 @@ export default function App() {
 
   const cartCount = cart.reduce((sum, i) => sum + i.qty, 0);
 
+  const categoryMap = {
+    "Grocery": "Grocery",
+    "Snacks": "Edible / Snacks",
+    "Fresh & Frozen": "Fresh & Frozen",
+    "General Store": "General Store",
+  };
+
+  const handleSearch = (query, catLabel) => {
+    const mappedCat = categoryMap[catLabel] || null;
+    setSearchQuery(query);
+    setSearchCategory(mappedCat);
+    if (mappedCat) setSelectedCategory(mappedCat);
+    setPage("listing");
+  };
+
+  const clearSearch = () => {
+    setSearchQuery("");
+    setSearchCategory(null);
+  };
+
+  const sharedNavProps = {
+    onSearch: handleSearch,
+    onCategorySelect: navigateTo,
+    categories,
+    activeCategory: selectedCategory,
+  };
+
   return (
     <div>
       {page === "home" && (
-        <HomePage setPage={navigateTo} cartCount={cartCount} addToCart={addToCart} viewProduct={viewProduct} onSearch={handleSearch} />
+        <HomePage
+          setPage={navigateTo}
+          cartCount={cartCount}
+          addToCart={addToCart}
+          viewProduct={viewProduct}
+          {...sharedNavProps}
+        />
       )}
       {page === "listing" && (
         <ProductListingPage
@@ -74,14 +88,20 @@ export default function App() {
           cartCount={cartCount}
           addToCart={addToCart}
           viewProduct={viewProduct}
-          onSearch={handleSearch}
           searchQuery={searchQuery}
           searchCategory={searchCategory}
           onClearSearch={clearSearch}
+          {...sharedNavProps}
         />
       )}
       {page === "detail" && (
-        <ProductDetailPage setPage={navigateTo} cartCount={cartCount} product={selectedProduct} addToCart={addToCart} onSearch={handleSearch} />
+        <ProductDetailPage
+          setPage={navigateTo}
+          cartCount={cartCount}
+          product={selectedProduct}
+          addToCart={addToCart}
+          {...sharedNavProps}
+        />
       )}
       {page === "cart" && (
         <CartCheckoutPage
@@ -90,7 +110,7 @@ export default function App() {
           cartCount={cartCount}
           updateQty={updateQty}
           removeFromCart={removeFromCart}
-          onSearch={handleSearch}
+          {...sharedNavProps}
         />
       )}
     </div>

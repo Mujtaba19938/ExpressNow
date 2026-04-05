@@ -9,7 +9,7 @@ const FREE_DELIVERY_THRESHOLD = 1500;
 const COUPON_CODE = "WELCOME10";
 const COUPON_DISCOUNT = 200;
 
-export default function CartCheckoutPage({ setPage, cart, cartCount, updateQty, removeFromCart, onSearch }) {
+export default function CartCheckoutPage({ setPage, cart, cartCount, updateQty, removeFromCart, onSearch, onCategorySelect, categories, activeCategory }) {
   const [coupon, setCoupon] = useState("");
   const [couponApplied, setCouponApplied] = useState(false);
   const [deliveryMethod, setDeliveryMethod] = useState("same-day");
@@ -44,7 +44,7 @@ export default function CartCheckoutPage({ setPage, cart, cartCount, updateQty, 
 
   return (
     <div style={{ background: "#F8F8F8", minHeight: "100vh" }}>
-      <Navbar cartCount={cartCount} onNavigate={setPage} onSearch={onSearch} />
+      <Navbar cartCount={cartCount} onNavigate={setPage} onSearch={onSearch} onCategorySelect={onCategorySelect} categories={categories || []} activeCategory={activeCategory} />
 
       <div style={{ padding: "10px 16px", fontSize: 12, color: "#6B7280" }}>
         Home › <span style={{ color: "#FF6B00" }}>Cart & Checkout</span>

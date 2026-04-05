@@ -90,3 +90,9 @@ input, select, textarea { font-family: inherit; }
   margin: 0 auto;
   padding: 0 16px;
 }
+
+/* Mobile drawer — scroll lock */
+body.drawer-open { overflow: hidden; }
+
+/* Hide scrollbar on chip scroller (webkit) */
+.chip-scroller::-webkit-scrollbar { display: none; }

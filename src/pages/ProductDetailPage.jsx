@@ -2,6 +2,7 @@ import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Heart, Minus, Plus, ShieldCheck, RotateCcw, Truck } from "lucide-react";
+import useWindowWidth from "../hooks/useWindowWidth";
 
 const defaultDescription = "Premium quality product sourced from trusted suppliers. Delivered fresh to your doorstep with Express Now's same-day delivery service in Karachi.";
 
@@ -18,9 +19,11 @@ const defaultReviews = [
   { name: "Hassan Khan", rating: 5, date: "1 week ago", text: "Best quality in Karachi. Express Now delivers on time every time." },
 ];
 
-export default function ProductDetailPage({ setPage, cartCount, product: passedProduct, addToCart, onSearch }) {
+export default function ProductDetailPage({ setPage, cartCount, product: passedProduct, addToCart, onSearch, onCategorySelect, categories, activeCategory }) {
   const product = passedProduct || { id: 0, name: "Product", category: "General", subcat: "", price: 0, rating: 0, reviews: 0 };
   const [qty, setQty] = useState(1);
+  const width = useWindowWidth();
+  const isMobile = width < 768;
   const [weight, setWeight] = useState("1 kg");
   const [type, setType] = useState("Fresh");
   const [wished, setWished] = useState(false);
@@ -36,19 +39,19 @@ export default function ProductDetailPage({ setPage, cartCount, product: passedP
 
   return (
     <div style={{ background: "#F8F8F8", minHeight: "100vh" }}>
-      <Navbar cartCount={cartCount} onNavigate={setPage} onSearch={onSearch} />
+      <Navbar cartCount={cartCount} onNavigate={setPage} onSearch={onSearch} onCategorySelect={onCategorySelect} categories={categories || []} activeCategory={activeCategory} />
 
       <div style={{ padding: "10px 16px", fontSize: 12, color: "#6B7280" }}>
         <span onClick={() => setPage("home")} style={{ cursor: "pointer", color: "#FF6B00" }}>Home</span> › {product.category} › <span style={{ color: "#FF6B00" }}>{product.name}</span>
       </div>
 
       {/* Main detail layout */}
-      <div style={{ display: "flex", gap: 20, padding: "0 16px", maxWidth: 1232, margin: "0 auto 24px" }}>
+      <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 20, padding: "0 16px", maxWidth: 1232, margin: "0 auto 24px" }}>
         {/* Image column */}
-        <div style={{ width: 360, flexShrink: 0 }}>
+        <div style={{ width: isMobile ? "100%" : 360, flexShrink: isMobile ? 1 : 0 }}>
           <div style={{
             background: product.bg || "#f0faf4", border: "0.5px solid rgba(0,0,0,0.1)",
-            borderRadius: 16, height: 300,
+            borderRadius: 16, height: isMobile ? 240 : 300,
             display: "flex", alignItems: "center", justifyContent: "center",
             position: "relative", marginBottom: 12, fontSize: 80,
           }}>
@@ -175,26 +178,28 @@ export default function ProductDetailPage({ setPage, cartCount, product: passedP
           </div>
 
           {/* CTAs */}
-          <div style={{ display: "flex", gap: 10, marginBottom: 18 }}>
+          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 10, marginBottom: 18 }}>
             <button onClick={() => { for (let i = 0; i < qty; i++) addToCart(product); }} style={{
               flex: 1, background: "#FF6B00", color: "#fff", border: "none",
-              padding: "13px", borderRadius: 10, fontSize: 14, fontWeight: 600, cursor: "pointer",
+              padding: "13px", borderRadius: 10, fontSize: 14, fontWeight: 600, cursor: "pointer", minHeight: 48,
             }}>
               Add to Cart
             </button>
             <button style={{
               flex: 1, background: "#1A1A2E", color: "#fff", border: "none",
-              padding: "13px", borderRadius: 10, fontSize: 14, fontWeight: 600, cursor: "pointer",
+              padding: "13px", borderRadius: 10, fontSize: 14, fontWeight: 600, cursor: "pointer", minHeight: 48,
             }}>
               Buy Now
             </button>
-            <button onClick={() => setWished(!wished)} style={{
-              width: 46, height: 46, border: "0.5px solid rgba(0,0,0,0.15)",
-              borderRadius: 10, background: "#fff", cursor: "pointer",
-              display: "flex", alignItems: "center", justifyContent: "center",
-            }}>
-              <Heart size={18} color="#FF6B00" fill={wished ? "#FF6B00" : "none"} />
-            </button>
+            {!isMobile && (
+              <button onClick={() => setWished(!wished)} style={{
+                width: 46, height: 46, border: "0.5px solid rgba(0,0,0,0.15)",
+                borderRadius: 10, background: "#fff", cursor: "pointer",
+                display: "flex", alignItems: "center", justifyContent: "center",
+              }}>
+                <Heart size={18} color="#FF6B00" fill={wished ? "#FF6B00" : "none"} />
+              </button>
+            )}
           </div>
 
           {/* Delivery info */}
