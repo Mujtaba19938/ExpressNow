@@ -67,23 +67,23 @@ export default function CartCheckoutPage({ setPage, cart, cartCount, updateQty, 
       }}>
         {steps.map((s, i) => (
           <div key={s} style={{ display: "flex", alignItems: "center" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: isMobile ? 4 : 8 }}>
               <div style={{
-                width: 30, height: 30, borderRadius: "50%",
+                width: isMobile ? 24 : 30, height: isMobile ? 24 : 30, borderRadius: "50%",
                 background: i < step - 1 ? "#22C55E" : i === step - 1 ? "#FF6B00" : "#f0f0f0",
                 color: i <= step - 1 ? "#fff" : "#9CA3AF",
                 display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: 12, fontWeight: 600,
+                fontSize: isMobile ? 10 : 12, fontWeight: 600, flexShrink: 0,
               }}>
                 {i < step - 1 ? "✓" : i + 1}
               </div>
               <span style={{
-                fontSize: 12, fontWeight: 600,
+                fontSize: isMobile ? 10 : 12, fontWeight: 600, whiteSpace: "nowrap",
                 color: i < step - 1 ? "#22C55E" : i === step - 1 ? "#FF6B00" : "#9CA3AF",
               }}>{s}</span>
             </div>
             {i < steps.length - 1 && (
-              <div style={{ width: 52, height: 0.5, background: i < step - 1 ? "#22C55E" : "rgba(0,0,0,0.15)", margin: "0 10px" }} />
+              <div style={{ width: isMobile ? 16 : 52, height: 0.5, background: i < step - 1 ? "#22C55E" : "rgba(0,0,0,0.15)", margin: isMobile ? "0 4px" : "0 10px", flexShrink: 0 }} />
             )}
           </div>
         ))}
