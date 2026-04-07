@@ -7,7 +7,7 @@ import { products, categories } from "../data/products";
 import useWindowWidth from "../hooks/useWindowWidth";
 
 const trustItems = [
-  { icon: "🚚", title: "Same Day Delivery", sub: "Order before 3 PM" },
+  { icon: "🚚", title: "Same Day Delivery", sub: "" },
   { icon: "✅", title: "100% Fresh",         sub: "Quality guaranteed"   },
   { icon: "↩️", title: "Easy Returns",       sub: "7 day return policy"  },
   { icon: "📞", title: "24/7 Support",       sub: "WhatsApp & Call"      },
