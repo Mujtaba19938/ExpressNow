@@ -39,9 +39,9 @@ export default function CartCheckoutPage({ setPage, cart, cartCount, updateQty, 
   };
 
   const deliveryOptions = [
-    { id: "same-day", label: "Same-day delivery", sub: "Order before 3 PM — arrives today", price: "Rs. 99" },
-    { id: "standard", label: "Standard delivery", sub: "Arrives within 1–2 days", price: "Free" },
-    { id: "express", label: "Express (2 hrs)", sub: "Priority handling + rush delivery", price: "Rs. 249" },
+    { id: "same-day", label: "Same-day delivery", sub: "", price: "Rs. 99" },
+    { id: "standard", label: "Standard delivery", sub: "", price: "Free" },
+    { id: "express", label: "Express (2 hrs)", sub: "", price: "Rs. 249" },
   ];
 
   const steps = ["Cart", "Delivery Info", "Payment", "Confirm"];
