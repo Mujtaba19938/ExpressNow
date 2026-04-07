@@ -34,7 +34,7 @@ export default function Navbar({
             Free delivery on orders above Rs. 1,500 in Karachi
           </span>
           <div style={{ display: "flex", gap: 16 }}>
-            <span style={{ fontSize: 11, color: "#aaa" }}>+92 300 0000000</span>
+            <span style={{ fontSize: 11, color: "#aaa" }}>03185715246 | 03290390774</span>
             <span style={{ fontSize: 11, color: "#aaa", cursor: "pointer" }}>Track Order</span>
             <span style={{ fontSize: 11, color: "#aaa", cursor: "pointer" }}>Help</span>
           </div>

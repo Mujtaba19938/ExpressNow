@@ -21,7 +21,7 @@ export default function Footer() {
           <p style={{ fontSize: 12, color: "#888", lineHeight: 1.7, marginBottom: 10 }}>
             Karachi's fastest delivery store — grocery, fashion, fresh meat & more.
           </p>
-          <p style={{ fontSize: 12, color: "#FF6B00" }}>+92 300 0000000</p>
+          <p style={{ fontSize: 12, color: "#FF6B00" }}>03185715246 | 03290390774</p>
         </div>
 
         {[
