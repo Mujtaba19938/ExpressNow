@@ -33,10 +33,6 @@ export default function Footer() {
             title: "My Account",
             links: ["Login / Register", "My Orders", "Wishlist", "Returns & Refunds"],
           },
-          {
-            title: "Opening Hours",
-            links: ["Mon–Sat: 9 AM – 10 PM", "Sunday: 10 AM – 8 PM", "Delivery: All week"],
-          },
         ].map((col) => (
           <div key={col.title}>
             <h4 style={{ fontSize: 13, fontWeight: 600, color: "#fff", marginBottom: 10 }}>
