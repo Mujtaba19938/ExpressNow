@@ -333,6 +333,7 @@ export default function CartCheckoutPage({ setPage, cart, cartCount, updateQty, 
             <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 10 }}>We accept</div>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               <div style={{ padding: "4px 12px", background: "#1A1A2E", color: "#fff", borderRadius: 5, fontSize: 11, fontWeight: 600 }}>COD</div>
+              <div style={{ padding: "4px 12px", background: "#1a73e8", color: "#fff", borderRadius: 5, fontSize: 11, fontWeight: 600 }}>Online</div>
             </div>
           </div>
         </div>
