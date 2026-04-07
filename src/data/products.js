@@ -113,4 +113,5 @@ export const deliveryZones = [
 
 export const paymentMethods = [
   { id: "cod", label: "Cash on Delivery", sub: "Pay when your order arrives", color: "#1A1A2E" },
+  { id: "online", label: "Online Payment", sub: "Bank transfer / account deposit", color: "#1a73e8" },
 ];

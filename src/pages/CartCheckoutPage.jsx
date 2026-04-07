@@ -233,24 +233,54 @@ export default function CartCheckoutPage({ setPage, cart, cartCount, updateQty, 
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 8, padding: "12px 16px" }}>
               {paymentMethods.map(pm => (
-                <div key={pm.id} onClick={() => setPaymentMethod(pm.id)} style={{
-                  display: "flex", alignItems: "center", gap: 12, padding: "11px 14px",
-                  border: `0.5px solid ${paymentMethod === pm.id ? "#FF6B00" : "rgba(0,0,0,0.15)"}`,
-                  background: paymentMethod === pm.id ? "#fff7f0" : "#fff",
-                  borderRadius: 10, cursor: "pointer",
-                }}>
-                  <input type="radio" name="payment" checked={paymentMethod === pm.id} onChange={() => setPaymentMethod(pm.id)} style={{ accentColor: "#FF6B00" }} />
-                  <div style={{
-                    width: 38, height: 28, borderRadius: 5, background: pm.color,
-                    color: "#fff", fontSize: 9, fontWeight: 700,
-                    display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+                <div key={pm.id}>
+                  <div onClick={() => setPaymentMethod(pm.id)} style={{
+                    display: "flex", alignItems: "center", gap: 12, padding: "11px 14px",
+                    border: `0.5px solid ${paymentMethod === pm.id ? "#FF6B00" : "rgba(0,0,0,0.15)"}`,
+                    background: paymentMethod === pm.id ? "#fff7f0" : "#fff",
+                    borderRadius: paymentMethod === pm.id && pm.id === "online" ? "10px 10px 0 0" : 10,
+                    cursor: "pointer",
                   }}>
-                    {pm.id.toUpperCase().slice(0,4)}
+                    <input type="radio" name="payment" checked={paymentMethod === pm.id} onChange={() => setPaymentMethod(pm.id)} style={{ accentColor: "#FF6B00" }} />
+                    <div style={{
+                      width: 38, height: 28, borderRadius: 5, background: pm.color,
+                      color: "#fff", fontSize: 9, fontWeight: 700,
+                      display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+                    }}>
+                      {pm.id.toUpperCase().slice(0,4)}
+                    </div>
+                    <div>
+                      <strong style={{ fontSize: 13, display: "block" }}>{pm.label}</strong>
+                      <span style={{ fontSize: 11, color: "#6B7280" }}>{pm.sub}</span>
+                    </div>
                   </div>
-                  <div>
-                    <strong style={{ fontSize: 13, display: "block" }}>{pm.label}</strong>
-                    <span style={{ fontSize: 11, color: "#6B7280" }}>{pm.sub}</span>
-                  </div>
+
+                  {/* Bank details dropdown — shown when Online Payment is selected */}
+                  {pm.id === "online" && paymentMethod === "online" && (
+                    <div style={{
+                      border: "0.5px solid #FF6B00",
+                      borderTop: "none",
+                      borderRadius: "0 0 10px 10px",
+                      background: "#fff7f0",
+                      padding: "14px 16px",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 6,
+                    }}>
+                      <p style={{ fontSize: 12, fontWeight: 700, color: "#1A1A2E", marginBottom: 4 }}>🏦 MCB Islamic Bank</p>
+                      {[
+                        { label: "Account Title", value: "Qurrat Ul Ain" },
+                        { label: "Account #", value: "0331006768600001" },
+                        { label: "Bank Name", value: "MCB Islamic Bank" },
+                        { label: "IBAN #", value: "PK43MICB033100676800001" },
+                      ].map(row => (
+                        <div key={row.label} style={{ display: "flex", justifyContent: "space-between", fontSize: 12 }}>
+                          <span style={{ color: "#6B7280", fontWeight: 500 }}>{row.label}</span>
+                          <span style={{ color: "#1A1A2E", fontWeight: 600 }}>{row.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
