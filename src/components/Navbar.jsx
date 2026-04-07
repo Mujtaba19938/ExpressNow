@@ -317,7 +317,7 @@ export default function Navbar({
           color: "#fff",
           fontWeight: 600,
         }}>
-          Same-day delivery available in Karachi — Order before 3 PM
+          Same-day delivery available in Karachi
         </div>
       )}
 
