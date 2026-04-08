@@ -11,7 +11,15 @@ const badgeStyles = {
 
 export default function ProductCard({ product, onAddToCart, onClickProduct }) {
   const [wished, setWished] = useState(false);
+  const [showToast, setShowToast] = useState(false);
   const width = useWindowWidth();
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
+    onAddToCart?.(product);
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 2000);
+  };
   const isMobile = width < 768;
 
   const {
@@ -91,7 +99,7 @@ export default function ProductCard({ product, onAddToCart, onClickProduct }) {
         {/* Mobile Quick Add floating button */}
         {isMobile && (
           <button
-            onClick={e => { e.stopPropagation(); onAddToCart?.(product); }}
+            onClick={handleAddToCart}
             style={{
               position: "absolute",
               bottom: 8,
@@ -158,7 +166,7 @@ export default function ProductCard({ product, onAddToCart, onClickProduct }) {
           {/* Desktop add-to-cart button — hidden on mobile (Quick Add overlay is used instead) */}
           {!isMobile && (
             <button
-              onClick={e => { e.stopPropagation(); onAddToCart?.(product); }}
+              onClick={handleAddToCart}
               style={{
                 background: "#FF6B00",
                 color: "#fff",
@@ -179,6 +187,27 @@ export default function ProductCard({ product, onAddToCart, onClickProduct }) {
           )}
         </div>
       </div>
+
+      {showToast && (
+        <div style={{
+          position: "fixed",
+          bottom: 80,
+          left: "50%",
+          transform: "translateX(-50%)",
+          background: "#1A1A2E",
+          color: "#fff",
+          padding: "10px 20px",
+          borderRadius: 10,
+          fontSize: 13,
+          fontWeight: 600,
+          zIndex: 9999,
+          boxShadow: "0 4px 16px rgba(0,0,0,0.25)",
+          whiteSpace: "nowrap",
+          pointerEvents: "none",
+        }}>
+          Product added successfully!
+        </div>
+      )}
     </div>
   );
 }
