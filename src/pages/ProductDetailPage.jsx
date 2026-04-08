@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Heart, Minus, Plus, ShieldCheck, RotateCcw, Truck } from "lucide-react";
@@ -28,7 +29,14 @@ export default function ProductDetailPage({ setPage, cartCount, product: passedP
   const [type, setType] = useState("Fresh");
   const [wished, setWished] = useState(false);
   const [activeTab, setActiveTab] = useState("description");
+  const [showToast, setShowToast] = useState(false);
   const total = product.price * qty;
+
+  const handleAddToCart = () => {
+    for (let i = 0; i < qty; i++) addToCart(product);
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 2000);
+  };
   const ratingBars = [
     { stars: 5, count: 87, pct: 68 },
     { stars: 4, count: 26, pct: 20 },
@@ -179,7 +187,7 @@ export default function ProductDetailPage({ setPage, cartCount, product: passedP
 
           {/* CTAs */}
           <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 10, marginBottom: 18 }}>
-            <button onClick={() => { for (let i = 0; i < qty; i++) addToCart(product); }} style={{
+            <button onClick={handleAddToCart} style={{
               flex: 1, background: "#FF6B00", color: "#fff", border: "none",
               padding: "13px", borderRadius: 10, fontSize: 14, fontWeight: 600, cursor: "pointer", minHeight: 48,
             }}>
@@ -301,6 +309,27 @@ export default function ProductDetailPage({ setPage, cartCount, product: passedP
       </div>
 
       <Footer />
+      {showToast && createPortal(
+        <div style={{
+          position: "fixed",
+          bottom: 80,
+          left: "50%",
+          transform: "translateX(-50%)",
+          background: "#1A1A2E",
+          color: "#fff",
+          padding: "10px 20px",
+          borderRadius: 10,
+          fontSize: 13,
+          fontWeight: 600,
+          zIndex: 9999,
+          boxShadow: "0 4px 16px rgba(0,0,0,0.25)",
+          whiteSpace: "nowrap",
+          pointerEvents: "none",
+        }}>
+          Product added successfully!
+        </div>,
+        document.body
+      )}
     </div>
   );
 }
