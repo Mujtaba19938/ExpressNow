@@ -205,7 +205,7 @@ export default function ProductDetailPage({ setPage, cartCount, product: passedP
           {/* Delivery info */}
           <div style={{ background: "#f8f8f8", borderRadius: 10, padding: "12px 14px", display: "flex", flexDirection: "column", gap: 10 }}>
             {[
-              { Icon: Truck, title: "Same-day delivery", sub: "Order before 3 PM — arrives today" },
+              { Icon: Truck, title: "Same-day delivery", sub: "" },
               { Icon: ShieldCheck, title: "100% Fresh guarantee", sub: "Packed fresh, inspected daily" },
               { Icon: RotateCcw, title: "Easy return", sub: "Quality issue? Full refund within 24hrs" },
             ].map(({ Icon, title, sub }) => (
