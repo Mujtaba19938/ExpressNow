@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { Heart, Plus } from "lucide-react";
 import useWindowWidth from "../hooks/useWindowWidth";
 
@@ -28,6 +29,7 @@ export default function ProductCard({ product, onAddToCart, onClickProduct }) {
   } = product;
 
   return (
+    <>
     <div
       style={{
         background: "#fff",
@@ -188,7 +190,9 @@ export default function ProductCard({ product, onAddToCart, onClickProduct }) {
         </div>
       </div>
 
-      {showToast && (
+    </div>
+
+      {showToast && createPortal(
         <div style={{
           position: "fixed",
           bottom: 80,
@@ -206,8 +210,9 @@ export default function ProductCard({ product, onAddToCart, onClickProduct }) {
           pointerEvents: "none",
         }}>
           Product added successfully!
-        </div>
+        </div>,
+        document.body
       )}
-    </div>
+    </>
   );
 }
