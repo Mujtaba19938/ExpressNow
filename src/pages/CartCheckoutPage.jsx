@@ -17,6 +17,8 @@ export default function CartCheckoutPage({ setPage, cart, cartCount, updateQty, 
   const [paymentMethod, setPaymentMethod] = useState("cod");
   const [step] = useState(2);
   const [orderPlaced, setOrderPlaced] = useState(false);
+  const [orderId] = useState(() => "EN-" + Math.floor(100000 + Math.random() * 900000));
+  const [orderDate] = useState(() => new Date().toLocaleString("en-PK", { dateStyle: "medium", timeStyle: "short" }));
 
   const width = useWindowWidth();
   const isMobile = width < 768;
@@ -343,25 +345,97 @@ export default function CartCheckoutPage({ setPage, cart, cartCount, updateQty, 
 
       {orderPlaced && (
         <div style={{
-          position: "fixed", inset: 0, background: "rgba(0,0,0,0.45)",
+          position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)",
           display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000,
+          padding: "16px",
         }}>
           <div style={{
-            background: "#fff", borderRadius: 16, padding: "36px 32px",
-            maxWidth: 380, width: "90%", textAlign: "center",
-            boxShadow: "0 8px 40px rgba(0,0,0,0.18)",
+            background: "#fff", borderRadius: 16,
+            maxWidth: 440, width: "100%", maxHeight: "90vh", overflowY: "auto",
+            boxShadow: "0 8px 40px rgba(0,0,0,0.22)",
           }}>
-            <div style={{ fontSize: 52, marginBottom: 12 }}>🎉</div>
-            <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 10, color: "#1A1A2E" }}>Order Placed!</h2>
-            <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.6, marginBottom: 24 }}>
-              Your order has been placed. You will be contacted shortly through your given number.
-            </p>
-            <button onClick={() => { setOrderPlaced(false); setPage("home"); }} style={{
-              background: "#FF6B00", color: "#fff", border: "none",
-              padding: "12px 32px", borderRadius: 10, fontSize: 14, fontWeight: 700, cursor: "pointer",
-            }}>
-              Back to Home
-            </button>
+            {/* Header */}
+            <div style={{ textAlign: "center", padding: "28px 28px 16px" }}>
+              <div style={{ fontSize: 48, marginBottom: 10 }}>🎉</div>
+              <h2 style={{ fontSize: 18, fontWeight: 700, color: "#1A1A2E", marginBottom: 6 }}>Order Placed!</h2>
+              <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.6 }}>
+                You will be contacted shortly through your given number.
+              </p>
+            </div>
+
+            {/* Receipt */}
+            <div style={{ margin: "0 20px 20px", border: "0.5px solid rgba(0,0,0,0.12)", borderRadius: 12, overflow: "hidden" }}>
+              {/* Receipt header */}
+              <div style={{ background: "#1A1A2E", padding: "12px 16px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div>
+                  <div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", marginBottom: 2 }}>Order Receipt</div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: "#fff" }}>{orderId}</div>
+                </div>
+                <div style={{ textAlign: "right" }}>
+                  <div style={{ fontSize: 10, color: "rgba(255,255,255,0.6)", marginBottom: 2 }}>Date</div>
+                  <div style={{ fontSize: 11, color: "#fff", fontWeight: 600 }}>{orderDate}</div>
+                </div>
+              </div>
+
+              {/* Items */}
+              <div style={{ padding: "10px 0" }}>
+                {cart.map(item => (
+                  <div key={item.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "7px 16px", fontSize: 13 }}>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ fontWeight: 600, color: "#111", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{item.name}</div>
+                      <div style={{ fontSize: 11, color: "#9CA3AF" }}>× {item.qty} @ Rs. {item.price.toLocaleString()}</div>
+                    </div>
+                    <div style={{ fontWeight: 700, color: "#1A1A2E", flexShrink: 0, marginLeft: 12 }}>
+                      Rs. {(item.price * item.qty).toLocaleString()}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Divider */}
+              <div style={{ borderTop: "0.5px dashed rgba(0,0,0,0.15)", margin: "0 16px" }} />
+
+              {/* Breakdown */}
+              <div style={{ padding: "10px 16px", display: "flex", flexDirection: "column", gap: 6 }}>
+                {[
+                  { label: "Subtotal", value: `Rs. ${subtotal.toLocaleString()}` },
+                  ...(itemDiscount > 0 ? [{ label: "Item discount", value: `− Rs. ${itemDiscount.toLocaleString()}`, green: true }] : []),
+                  ...(couponApplied ? [{ label: "Coupon (WELCOME10)", value: `− Rs. ${couponDiscount.toLocaleString()}`, green: true }] : []),
+                  { label: "Delivery", value: deliveryFee === 0 ? "Free" : `Rs. ${deliveryFee}`, green: deliveryFee === 0 },
+                ].map(row => (
+                  <div key={row.label} style={{ display: "flex", justifyContent: "space-between", fontSize: 12 }}>
+                    <span style={{ color: "#6B7280" }}>{row.label}</span>
+                    <span style={{ fontWeight: 600, color: row.green ? "#22C55E" : "#111" }}>{row.value}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Total */}
+              <div style={{ background: "#fff7f0", padding: "12px 16px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <span style={{ fontSize: 14, fontWeight: 700, color: "#1A1A2E" }}>Total Paid</span>
+                <span style={{ fontSize: 20, fontWeight: 800, color: "#FF6B00" }}>Rs. {total.toLocaleString()}</span>
+              </div>
+
+              {/* Payment & Delivery tags */}
+              <div style={{ padding: "10px 16px", display: "flex", gap: 8 }}>
+                <span style={{ fontSize: 11, fontWeight: 600, background: "#f0f0f0", color: "#1A1A2E", padding: "4px 10px", borderRadius: 6 }}>
+                  {paymentMethod === "cod" ? "Cash on Delivery" : "Online Payment"}
+                </span>
+                <span style={{ fontSize: 11, fontWeight: 600, background: "#f0f0f0", color: "#1A1A2E", padding: "4px 10px", borderRadius: 6 }}>
+                  {deliveryMethod === "same-day" ? "Same-day Delivery" : deliveryMethod === "express" ? "Express (2 hrs)" : "Standard Delivery"}
+                </span>
+              </div>
+            </div>
+
+            {/* Action */}
+            <div style={{ padding: "0 20px 24px" }}>
+              <button onClick={() => { setOrderPlaced(false); setPage("home"); }} style={{
+                width: "100%", background: "#FF6B00", color: "#fff", border: "none",
+                padding: "13px", borderRadius: 10, fontSize: 14, fontWeight: 700, cursor: "pointer",
+              }}>
+                Back to Home
+              </button>
+            </div>
           </div>
         </div>
       )}
